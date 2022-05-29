@@ -30,7 +30,6 @@ class AtividadesController extends Controller
     public function index()
     {
         return Atividades::with('pessoas')->get();
-        /* return Atividades::All(); */
     }
 
     /**

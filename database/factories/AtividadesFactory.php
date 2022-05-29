@@ -18,9 +18,9 @@ class AtividadesFactory extends Factory
     {
         return [
             'responsavel_id' => $this->faker->randomDigitNot(0),
-            'data_inicio' => $this->faker->dateTimeBetween('-30 years', 'now'),
-            'data_prazo' => $this->faker->dateTimeBetween('-30 years', 'now'),
-            'data_conclusao' => $this->faker->dateTimeBetween('-30 years', '+5 years'),
+            'data_inicio' => $this->faker->dateTimeBetween('now', '+5 days'),
+            'data_prazo' => $this->faker->dateTimeBetween('+5 days', '+10 days'),
+            'data_conclusao' => $this->faker->dateTimeBetween('+5 days', '+10 days'),
             'status' => 1,
             'titulo' => $this->faker->sentence,
             'descricao' => $this->faker->text
