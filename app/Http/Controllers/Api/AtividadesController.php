@@ -19,6 +19,7 @@ class AtividadesController extends Controller
     public function __construct(ValidateRangeDataService $validaterange)
     {
         $this->validaterange = $validaterange;
+        $this->middleware('auth:api');
     }
 
     /**
