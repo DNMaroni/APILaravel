@@ -2,6 +2,8 @@
 # API Agenda - PIPERUN
 A aplicação é uma API REST com as operações CRUD.
 
+### Teste das apis (PHPUnit)
+    php artisan test
 
 ## Aceso rápido
 
@@ -16,7 +18,6 @@ A aplicação é uma API REST com as operações CRUD.
  - [Atividades - Criar nova atividade](https://github.com/DNMaroni/API_Desafio#criar-nova-atividade)
  - [Atividades - Atualizar atividade](https://github.com/DNMaroni/API_Desafio#atualizar-atividade-por-id)
  - [Atividades - Deletar atividade](https://github.com/DNMaroni/API_Desafio#deletar-atividade-por-id)
-
 
 
 ## Autenticação (Auth) - JWT
