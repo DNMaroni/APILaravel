@@ -25,7 +25,7 @@ class AtividadesController extends Controller
     /**
      * index
      *
-     * @return void
+     * @return \App\Models\Atividades;
      */
     public function index()
     {
@@ -33,16 +33,10 @@ class AtividadesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    /**
      * store
      *
      * @param  mixed $request
-     * @return void
+     * @return \App\Models\Atividades;
      */
     public function store(AtividadesStoreRequest $request)
     {
@@ -59,10 +53,10 @@ class AtividadesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * show
      *
-     * @param  Atividades $atividade
-     * @return \Illuminate\Http\Response
+     * @param  mixed $request
+     * @return \App\Models\Atividades;
      */
     public function show(Request $request)
     {
@@ -79,7 +73,7 @@ class AtividadesController extends Controller
      * byRange
      *
      * @param  mixed $request
-     * @return void
+     * @return \App\Models\Atividades;
      */
     public function byRange(AtividadesByrangeRequest $request)
     {
@@ -97,7 +91,7 @@ class AtividadesController extends Controller
      *
      * @param  mixed $request
      * @param  mixed $id
-     * @return void
+     * @return \App\Models\Atividades;
      */
     public function update(AtividadesUpdateRequest $request, $id)
     {
@@ -105,8 +99,8 @@ class AtividadesController extends Controller
 
         $busca_atividade = $this->validaterange->validate($request);
 
-        //se a data do request for encontrada entre alguma atividade do mesmo responsavel, não deixa criar
-        if ($busca_atividade->count() > 0 and $busca_atividade->first()->responsavel_id != $request->get('responsavel_id')) {
+        //em caso de update, verifica se existe data
+        if ($busca_atividade->count() > 0 and $busca_atividade->first()->responsavel_id == $request->get('responsavel_id')) {
             return response()->json(['message' => 'Ops, uma atividade deste responsável já existe entre as datas de inicio e conclusão.'], 200);
         }
         
@@ -124,16 +118,14 @@ class AtividadesController extends Controller
      * destroy
      *
      * @param  mixed $id
-     * @return void
+     * @return string JSON
      */
     public function destroy($id)
     {
         try {
-            $atividade = Atividades::findOrFail($id);
+            return Atividades::findOrFail($id)->delete() == 1 ? response()->json(['message' => 'Removido com sucesso']) : response()->json(['message' => 'Não foi possível remover']);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'Não encontrado'], 404);
         }
-
-        return Atividades::destroy($id) == 1 ? response()->json(['message' => 'Removido com sucesso'], 200) : response()->json(['message' => 'Não encontrado'], 400);
     }
 }

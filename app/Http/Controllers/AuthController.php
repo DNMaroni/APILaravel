@@ -15,7 +15,13 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login','register']]);
     }
-
+    
+    /**
+     * login
+     *
+     * @param  mixed $request
+     * @return string JSON
+     */
     public function login(AuthLoginRequest $request)
     {
         $request->validated();
@@ -39,7 +45,13 @@ class AuthController extends Controller
                 ]
             ]);
     }
-
+    
+    /**
+     * register
+     *
+     * @param  mixed $request
+     * @return string JSON
+     */
     public function register(AuthRegisterRequest $request)
     {
         $request->validated();
@@ -61,7 +73,12 @@ class AuthController extends Controller
             ]
         ]);
     }
-
+    
+    /**
+     * logout
+     *
+     * @return string JSON
+     */
     public function logout()
     {
         Auth::logout();
@@ -70,7 +87,12 @@ class AuthController extends Controller
             'message' => 'Successfully logged out',
         ]);
     }
-
+    
+    /**
+     * refresh
+     *
+     * @return string JSON
+     */
     public function refresh()
     {
         return response()->json([

@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return response()->json(['message' => 'Acesse /api/register para acessar a api'], 200);
 });
