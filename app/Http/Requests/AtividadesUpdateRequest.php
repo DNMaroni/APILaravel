@@ -40,7 +40,7 @@ class AtividadesUpdateRequest extends FormRequest
                     $fail('Não é possível adicionar atividades com datas em fim de semana');
                 }
             }],
-            'status' => 'required|integer|lt:5',
+            'status' => 'required|integer|lt:4',
             'titulo' => 'required|string|max:100',
             'descricao' => 'nullable|string|max:300',
             'responsavel_id' => 'required|exists:pessoas,id'
