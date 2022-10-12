@@ -1,5 +1,5 @@
 
-# API Agenda - PIPERUN
+# API Agenda - Exemplo
 A aplicação é uma API REST com as operações CRUD.
 
 ### Teste das apis (PHPUnit)
