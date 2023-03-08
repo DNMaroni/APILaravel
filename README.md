@@ -2,6 +2,8 @@
 # API Agenda - Exemplo
 A aplicação é uma API REST com as operações CRUD.
 
+A API foi feita para ver como funciona o framework Laravel, sendo este o meu primeiro contato com a ferramenta.
+
 ### Teste das apis (PHPUnit)
     php artisan test
 
